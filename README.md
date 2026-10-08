@@ -9,7 +9,7 @@ The project includes data analysis, preprocessing, model training, evaluation, o
 ```text
 Credit-Risk-Prediction/
 │
-├── app.py
+├── main.py
 ├── credit_risk_prediction.py
 ├── credit_risk_dataset.csv
 ├── credit_risk_presentation.pptx
@@ -115,7 +115,7 @@ The project compares these metrics before and after applying PCA.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git clone https://github.com/mindlos777/Credit-Risk-Prediction
 cd YOUR-REPOSITORY
 ```
 
@@ -127,6 +127,9 @@ Make sure Python is installed, then run:
 
 ```bash
 pip install pandas numpy matplotlib scikit-learn streamlit joblib
+```
+```uv package manager
+uv add -r requiremnts.txt
 ```
 
 ### 3. Prepare the Dataset
