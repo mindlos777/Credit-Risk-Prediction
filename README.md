@@ -1,74 +1,185 @@
 # Credit Risk Prediction System
 
-This is a simple Machine Learning 600 project that predicts whether a loan applicant is high-risk or low-risk.
+A simple machine learning project developed for **Machine Learning 600**. The system predicts whether a loan applicant is **Low Risk (0)** or **High Risk (1)** based on their financial and personal information.
 
-## Project Files
+The project includes data analysis, preprocessing, model training, evaluation, optimisation, and a Streamlit web application for visualising results and testing predictions.
 
-- `credit_risk_prediction.py` - Python machine learning code
-- `credit_risk_dataset.csv` - dataset used by the program
-- `credit_risk_presentation.pptx` - project presentation
+## Project Structure
+
+```text
+Credit-Risk-Prediction/
+│
+├── app.py
+├── credit_risk_prediction.py
+├── credit_risk_dataset.csv
+├── credit_risk_presentation.pptx
+├── model/
+│   └── DecisionTreeClassifier.pkl
+└── README.md
+```
 
 ## Machine Learning Models
 
-The project uses three classification models:
+Three classification algorithms are used:
 
-1. Logistic Regression
-2. K-Nearest Neighbours (KNN)
-3. Decision Tree Classifier
+1. **Logistic Regression** – Predicts the probability of an applicant belonging to a risk category.
+2. **K-Nearest Neighbours (KNN)** – Classifies applicants based on similar records.
+3. **Decision Tree Classifier** – Uses decision rules to classify applicants.
 
-The models are trained before and after applying Principal Component Analysis (PCA).
+The models are evaluated both **before and after PCA** to compare their performance.
 
-## Main Steps
+## Machine Learning Pipeline
 
-- Load and inspect the dataset
-- Check missing values
-- Perform Exploratory Data Analysis
-- Clean the dataset
-- Handle missing values and outliers
-- Encode categorical variables
-- Scale the features
-- Split the data into training and testing sets
-- Apply PCA
-- Train three machine learning models
-- Compare model performance
-- Tune the Decision Tree using GridSearchCV
+The project follows these steps:
 
-## Libraries Used
+1. **Data Acquisition** – Load and inspect the Credit Risk Dataset.
+2. **Exploratory Data Analysis (EDA)** – Explore distributions, relationships, and outliers.
+3. **Data Cleaning** – Remove duplicates and handle missing values.
+4. **Outlier Handling** – Use the Interquartile Range (IQR) method to limit extreme values.
+5. **Encoding** – Convert categorical features into numerical values.
+6. **Feature Scaling** – Standardise features using StandardScaler.
+7. **Data Splitting** – Split the dataset into 80% training and 20% testing.
+8. **PCA** – Reduce dimensionality while retaining at least 95% of the explained variance.
+9. **Model Training** – Train Logistic Regression, KNN, and Decision Tree models.
+10. **Model Evaluation** – Compare the models using classification metrics.
+11. **Hyperparameter Tuning** – Optimise the Decision Tree using GridSearchCV.
+12. **Model Saving** – Save the optimised Decision Tree using Joblib.
 
-- pandas
-- numpy
-- matplotlib
-- scikit-learn
+## Streamlit Web Application
 
-## How to Run
+The project includes a simple web application built using **Streamlit**.
 
-Install the required libraries:
+### Dashboard
+
+The Dashboard displays:
+
+- Dataset preview and information
+- Total records, features, and missing values
+- Loan status distribution
+- Correlation heatmap
+- Boxplots for outlier detection
+- Feature distribution histograms
+- Model performance before and after PCA
+- Confusion matrices displayed in a 2 × 3 graph layout
+- Classification reports for all three models
+- Best Decision Tree parameters and evaluation scores
+
+### Test Model
+
+The Test Model page allows users to enter applicant information, including:
+
+- Age and annual income
+- Loan amount and interest rate
+- Home ownership and employment length
+- Loan purpose and grade
+- Loan percentage of income
+- Previous default history
+- Credit history length
+
+The application uses the saved Decision Tree model to predict the applicant's credit risk.
+
+**Prediction Output:**
+
+- **0 – Low Risk**
+- **1 – High Risk**
+
+The predictions are demonstrations of the trained model and should not be used as real lending decisions without further validation.
+
+## Model Evaluation
+
+The models are evaluated using the following metrics:
+
+| Metric | Description |
+|---|---|
+| Accuracy | Percentage of correct predictions |
+| Precision | How many predicted high-risk applicants are actually high-risk |
+| Recall | How many actual high-risk applicants were identified |
+| F1-Score | Balance between precision and recall |
+| Confusion Matrix | Shows correct and incorrect classifications |
+| Classification Report | Summarises precision, recall, F1-score, and support |
+
+The project compares these metrics before and after applying PCA.
+
+## Technologies and Libraries
+
+- **Python** – Main programming language
+- **Pandas** – Data manipulation
+- **NumPy** – Numerical operations
+- **Matplotlib** – Data visualisation
+- **Scikit-learn** – Machine learning and evaluation
+- **Streamlit** – Web application
+- **Joblib** – Model saving and loading
+
+## Installation and Setup
+
+### 1. Clone the Repository
 
 ```bash
-pip install pandas numpy matplotlib scikit-learn
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YOUR-REPOSITORY
 ```
 
-Make sure these files are in the same folder:
+Replace the URL with your GitHub repository link.
 
-```text
-credit_risk_prediction.py
-credit_risk_dataset.csv
+### 2. Install Dependencies
+
+Make sure Python is installed, then run:
+
+```bash
+pip install pandas numpy matplotlib scikit-learn streamlit joblib
 ```
 
-Run the project:
+### 3. Prepare the Dataset
+
+Make sure `credit_risk_dataset.csv` is in the same directory as the Python files.
+
+### 4. Run the Machine Learning Program
 
 ```bash
 python credit_risk_prediction.py
 ```
 
-The program will display dataset information, graphs, PCA results, accuracy, precision, recall, F1-score, confusion matrices, classification reports and tuning results.
+This runs the machine learning workflow, including preprocessing, PCA, model evaluation, and hyperparameter tuning.
+
+The optimised Decision Tree model is saved in the `model` folder.
+
+### 5. Run the Streamlit Application
+
+```bash
+streamlit run app.py
+```
+
+Streamlit will open the application in your browser, usually at:
+
+`http://localhost:8501`
+
+Use the sidebar to navigate between **Dashboard** and **Test Model**.
 
 ## Dataset
 
-The assignment requires the Credit Risk Dataset from Kaggle.
+The project uses the **Credit Risk Dataset** available on Kaggle.
 
-Dataset name:
+The dataset contains applicant information such as age, income, employment length, home ownership, loan details, and credit history.
 
-```text
-Credit Risk Dataset
-```
+**Target Variable:** `loan_status`
+
+- `0` – Low Risk
+- `1` – High Risk
+
+## Project Purpose
+
+The aim of this project is to demonstrate how supervised machine learning can be used to classify credit risk.
+
+It also explores how data preprocessing, dimensionality reduction, and hyperparameter tuning affect model performance.
+
+## Future Improvements
+
+- Save the complete preprocessing pipeline with the trained model.
+- Improve the model testing interface and input validation.
+- Add additional classification algorithms.
+- Compare models using ROC curves and AUC scores.
+- Deploy the Streamlit application online.
+
+---
+
+**Machine Learning 600 | Credit Risk Prediction Project**
