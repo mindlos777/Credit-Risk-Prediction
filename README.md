@@ -128,6 +128,7 @@ Make sure Python is installed, then run:
 ```bash
 pip install pandas numpy matplotlib scikit-learn streamlit joblib
 ```
+OR:
 ```uv package manager
 uv add -r requiremnts.txt
 ```
@@ -149,7 +150,7 @@ The optimised Decision Tree model is saved in the `model` folder.
 ### 5. Run the Streamlit Application
 
 ```bash
-streamlit run app.py
+streamlit run main.py
 ```
 
 Streamlit will open the application in your browser, usually at:
